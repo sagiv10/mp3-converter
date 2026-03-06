@@ -47,18 +47,7 @@ for album_path in "${INPUT_DIR}"/*; do
 	for output_song_path in "${ALBUM_OUTPUT_DIR}"/*; do
 
 		    
-		eyeD3 \
-  		--title "${SONG_NAME}" \
-  		--artist "${ARTIST_NAME}" \
-  		--album "${ALBUM_NAME}" \
-  		--album-artist "${ARTIST_NAME}" \
-  		--track "${track_number}" \
-  		--disc-num 1/1 \
-  		--genre "${GENRE}" \
-       	        --release-year 1948 \
-  	        --bpm 120 \
-  	        --comment "smile, it is good for you" \	
-		"${output_song_path}"
+		id3v2 --song "${SONG_NAME}" --artist "${ARTIST_NAME}" --album "${ALBUM_NAME}" --track "${track_number}/${album_num_songs}" --genre 1  --year 1948 "${output_song_path}"
 
 	    ((track_number++))
 
