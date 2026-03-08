@@ -6,10 +6,6 @@ ARTIST_NAME="${INPUT_DIR##*/}"
 
 GENRE=$2
 
-if [["${GENRE}" == ""]]; then
-	GENRE="0"
-fi
-
 MP4_MIME="video/mp4"
 MP3_MIME="audio/mpeg"
 
