@@ -4,9 +4,14 @@ INPUT_DIR=$1
 OUTPUT_DIR="${INPUT_DIR}_converted"
 ARTIST_NAME="${INPUT_DIR##*/}"
 
-GENRE=$2
+INSTALL_FROM_LOCAL_PACKAGES=$2
+if [[ "${INSTALL_FROM_LOCAL_PACKAGES}" == "y" ]]; then 
+	sudo dpkg -i "./deps/ffmpeg_7%3a4.4.2-0ubuntu0.22.04.1_amd64.deb"
+	sudo dpkg -i "./deps/id3v2_0.1.12+dfsg-6_amd64.deb"
+fi
 
-if [["${GENRE}" == ""]]; then
+GENRE=$3
+if [[ "${GENRE}" == "" ]]; then
 	GENRE="0"
 fi
 
@@ -51,7 +56,7 @@ for album_path in "${INPUT_DIR}"/*; do
 	for output_song_path in "${ALBUM_OUTPUT_DIR}"/*; do
 
 		    
-		id3v2 --song "${SONG_NAME}" --artist "${ARTIST_NAME}" --album "${ALBUM_NAME}" --track "${track_number}/${album_num_songs}" --genre 1  --year 1948 "${output_song_path}"
+		id3v2 --song "${SONG_NAME}" --artist "${ARTIST_NAME}" --album "${ALBUM_NAME}" --track "${track_number}/${album_num_songs}" --genre "${GENRE}"  --year 1948 "${output_song_path}"
 
 	    ((track_number++))
 

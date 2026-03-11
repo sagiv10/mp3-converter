@@ -14,7 +14,7 @@ This is useful for adding files to music servers or updating metadata of existin
 3. Run the script:  
 
 ```bash
-sudo /converter.sh full_path_to_input_directory [GENRE]
+sudo /converter.sh full_path_to_input_directory ['y' to install deps locally (see below)] [GENRE]
 ```
 
 
@@ -33,6 +33,9 @@ sudo apt install ffmpeg
 ```bash
 sudo apt install id3v2
 ```
+
+#### If you don't want (or can't) to download ffmpeg and id3v2 from the internet, there is an option to 
+#### install it from pre-downloaded packages (put 'y' as second argument).
 
 
 ## input structure
@@ -139,5 +142,3 @@ the GENRE argument is working like at id3v2, and listed here:
 ## upcoming changes
 
 ### Run the script for all artists at once.
-
-### Docker support.
